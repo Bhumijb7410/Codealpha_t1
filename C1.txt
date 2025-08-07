@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+
+// Function to calculate grade points
+double calculateGradePoints(char grade) {
+switch (grade) {
+case 'A':
+return 4.0;
+case 'B':
+return 3.0;
+case 'C':
+return 2.0;
+case 'D':
+return 1.0;
+case 'F':
+return 0.0;
+default:
+cout << "Invalid grade. Assuming F." << endl;
+return 0.0;
+}
+}
+
+
+int main() {
+int numCourses;
+cout << "Enter the number of courses: ";
+cin >> numCourses;
+
+
+double totalCredits = 0.0;
+double totalGradePoints = 0.0;
+
+
+cout << "Enter grades and credits for each course:" << endl;
+for (int i = 1; i <= numCourses; i++) {
+    char grade;
+    double credits;
+    cout << "Course " << i << ":" << endl;
+    cout << "Grade (A, B, C, D, F): ";
+    cin >> grade;
+    cout << "Credits: ";
+    cin >> credits;
+
+
+    double gradePoints = calculateGradePoints(grade);
+    double courseGradePoints = gradePoints * credits;
+
+
+    totalCredits += credits;
+    totalGradePoints += courseGradePoints;
+
+
+    cout << "Course " << i << " grade: " << grade << endl;
+    cout << "Course " << i << " credits: " << credits << endl;
+    cout << "Course " << i << " grade points: " << courseGradePoints << endl;
+    cout << endl;
+}
+
+
+double gpa = totalGradePoints / totalCredits;
+cout << "Total credits: " << totalCredits << endl;
+cout << "Total grade points: " << totalGradePoints << endl;
+cout << "GPA for the semester: " << gpa << endl;
+
+
+// Assuming this is the only semester for simplicity
+double cgpa = gpa;
+cout << "CGPA: " << cgpa << endl;
+
+
+return 0;
+}
